@@ -1,7 +1,7 @@
 {
   "timeZone": "Australia/Sydney",
   "dependencies": {},
-  "exceptionLogging": "STACKDRIVER",
+  "exceptionLogging": "NONE",
   "runtimeVersion": "V8",
   "webapp": {
     "executeAs": "USER_DEPLOYING",

@@ -5,5 +5,16 @@
   </head>
   <body>
     <h1> Trend Grapher </h1>
+    <button id="graph"> Graph Trends </button>
+
+
+    <script>
+      document.getElementById("graph").addEventListener("click",graphsubmit);
+      function graphsubmit(){
+        google.script.run.graphSubmitted();
+      }
+
+
+    </script>
   </body>
 </html>
