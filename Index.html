@@ -5,13 +5,16 @@
   </head>
   <body>
     <h1> Trend Grapher </h1>
+    <label>Mark for Assignment 1     </label><input type="text" id="MarkOne">
     <button id="graph"> Graph Trends </button>
 
 
     <script>
       document.getElementById("graph").addEventListener("click",graphsubmit);
       function graphsubmit(){
-        google.script.run.graphSubmitted();
+        var mark1 = document.getElementById("MarkOne").value;
+        google.script.run.graphSubmitted(mark1);
+        document.getElementById("MarkOne").value = "";
       }
 
 

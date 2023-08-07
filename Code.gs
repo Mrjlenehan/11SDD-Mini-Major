@@ -4,7 +4,7 @@ function doGet(event) {
 }
 
 
-function graphSubmitted(){
-  Logger.log("Marks were entered");
+function graphSubmitted(mark1){
+  Logger.log(mark1 + " Marks were entered");
 
 }
