@@ -5,19 +5,87 @@
   </head>
   <body>
     <h1> Trend Grapher </h1>
-    <label>Mark for Assignment 1     </label><input type="text" id="MarkOne">
-    <button id="graph"> Graph Trends </button>
+    <div class="form-container">
+      <div class="form-header">
+        <label>Mark for Assignment 1     </label><input type="text" id="MarkOne" class="markstyle">
+        <label>Mark for Assignment 2     </label><input type="text" id="MarkTwo" class="markstyle">
+        <label>Mark for Assignment 3     </label><input type="text" id="MarkThree" class="markstyle">
+        <label>Mark for Assignment 4     </label><input type="text" id="MarkFour" class="markstyle">
+      </div>
+    </div>
+    <button id="graph" class="submit-button"> Graph Trends </button>
 
 
     <script>
       document.getElementById("graph").addEventListener("click",graphsubmit);
       function graphsubmit(){
         var mark1 = document.getElementById("MarkOne").value;
-        google.script.run.graphSubmitted(mark1);
+        var mark2 = document.getElementById("MarkTwo").value;
+        var mark3 = document.getElementById("MarkThree").value;
+        var mark4 = document.getElementById("MarkFour").value;
+        google.script.run.graphSubmitted(mark1, mark2, mark3, mark4);
         document.getElementById("MarkOne").value = "";
+        document.getElementById("MarkTwo").value = "";
+        document.getElementById("MarkThree").value = "";
+        document.getElementById("MarkFour").value = "";
       }
 
 
     </script>
+    <style>
+      h1{
+        text-align:center;
+        font-size: 100px;
+        margin-top: 10px;
+
+      }
+      .markstyle{
+        display: inline-block
+      }
+      /* Styling for the form container */
+      .form-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 50px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+      }
+
+      /* Styling for the form header */
+      .form-header {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      /* Styling for the text inputs */
+      .text-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      /* Styling for the submit button */
+      .submit-button {
+        text-align:center;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+        margin-left:820px;
+        margin-top:20px;
+      }
+
+      .submit-button:hover {
+        background-color: #0056b3;
+      }
+    </style>
   </body>
 </html>
