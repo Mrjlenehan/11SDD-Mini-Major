@@ -13,14 +13,17 @@
         <label>Mark for Assignment 4     </label><input type="text" id="MarkFour" class="markstyle">
       </div>
     </div>
-    <button id="graph" class="submit-button"> Graph Trends </button>
+    <button id="graph" class="submit-button"> Store Data </button>
     <button id="retrieve">Retrieve </button>
+    <button id="averagebutton">Find Average </button>
 
-    <h2 id="markonetext">Mark One</h2>
+    <h2 id="markonetext"></h2>
+    <h2 id="average"></h2>
 
 <script>
 document.getElementById("graph").addEventListener("click", graphsubmit);
 document.getElementById("retrieve").addEventListener("click", retrieve1);
+document.getElementById("averagebutton").addEventListener("click", average);
 
 function graphsubmit() {
     var mark1 = document.getElementById("MarkOne").value;
@@ -78,7 +81,16 @@ function retrieve4(){
   google.script.run.withSuccessHandler(mark4Return).retrieveValues4();
 }
 
-
+function average(){
+  const result1Value = typeof window.result1 !== "undefined" ? window.result1 : "Not available";
+  const result2Value = typeof window.result2 !== "undefined" ? window.result2 : "Not available";
+  const result3Value = typeof window.result3 !== "undefined" ? window.result3 : "Not available";
+  const result4Value = typeof window.result4 !== "undefined" ? window.result4 : "Not available";
+  let sum = result1Value + result2Value + result3Value + result4Value;
+  let average = sum/4;
+  console.log(average);
+  document.getElementById("average").textContent = average;
+}
 
 </script>
     <style>
