@@ -14,10 +14,15 @@
       </div>
     </div>
     <button id="graph" class="submit-button"> Graph Trends </button>
+    <button id="retrieve">Retrieve </button>
+
+    <h2 id="markonetext">Mark One</h2>
 
 
     <script>
       document.getElementById("graph").addEventListener("click",graphsubmit);
+      document.getElementById("retrieve").addEventListener("click",retrieve);
+
       function graphsubmit(){
         var mark1 = document.getElementById("MarkOne").value;
         var mark2 = document.getElementById("MarkTwo").value;
@@ -29,6 +34,16 @@
         document.getElementById("MarkThree").value = "";
         document.getElementById("MarkFour").value = "";
       }
+      function onSuccess(results){
+        console.log(results);
+        document.getElementById("markonetext").textContent = results;
+
+      }
+      function retrieve(){
+        google.script.run.withSuccessHandler(onSuccess)
+          .retrieveValues();
+      }
+
 
 
     </script>
