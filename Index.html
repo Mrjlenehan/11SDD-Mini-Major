@@ -18,35 +18,69 @@
 
     <h2 id="markonetext">Mark One</h2>
 
+<script>
+document.getElementById("graph").addEventListener("click", graphsubmit);
+document.getElementById("retrieve").addEventListener("click", retrieve1);
 
-    <script>
-      document.getElementById("graph").addEventListener("click",graphsubmit);
-      document.getElementById("retrieve").addEventListener("click",retrieve);
+function graphsubmit() {
+    var mark1 = document.getElementById("MarkOne").value;
+    var mark2 = document.getElementById("MarkTwo").value;
+    var mark3 = document.getElementById("MarkThree").value;
+    var mark4 = document.getElementById("MarkFour").value;
+    google.script.run.withSuccessHandler(mark1Return).graphSubmitted(mark1, mark2, mark3, mark4);
+    document.getElementById("MarkOne").value = "";
+    document.getElementById("MarkTwo").value = "";
+    document.getElementById("MarkThree").value = "";
+    document.getElementById("MarkFour").value = "";
+}
 
-      function graphsubmit(){
-        var mark1 = document.getElementById("MarkOne").value;
-        var mark2 = document.getElementById("MarkTwo").value;
-        var mark3 = document.getElementById("MarkThree").value;
-        var mark4 = document.getElementById("MarkFour").value;
-        google.script.run.graphSubmitted(mark1, mark2, mark3, mark4);
-        document.getElementById("MarkOne").value = "";
-        document.getElementById("MarkTwo").value = "";
-        document.getElementById("MarkThree").value = "";
-        document.getElementById("MarkFour").value = "";
-      }
-      function onSuccess(results){
-        console.log(results);
-        document.getElementById("markonetext").textContent = results;
+function mark1Return(result1) {
+    console.log(result1);
+    window.result1 = result1;
+    retrieve2();
+}
 
-      }
-      function retrieve(){
-        google.script.run.withSuccessHandler(onSuccess)
-          .retrieveValues();
-      }
+function retrieve1() {
+    google.script.run.withSuccessHandler(mark1Return).retrieveValues1();
+}
+
+function mark2Return(result2) {
+    console.log(result2);
+    window.result2 = result2;
+    retrieve3();
+}
+
+function retrieve2() {
+    google.script.run.withSuccessHandler(mark2Return).retrieveValues2();
+}
+
+function mark3Return(result3){
+    console.log(result3);
+    window.result3 = result3;
+    retrieve4();
+}
+
+function retrieve3(){
+  google.script.run.withSuccessHandler(mark3Return).retrieveValues3();
+}
+
+function mark4Return(result4){
+  console.log(result4);
+  window.result4 = result4;
+  const result1Value = typeof window.result1 !== "undefined" ? window.result1 : "Not available";
+  const result2Value = typeof window.result2 !== "undefined" ? window.result2 : "Not available";
+  const result3Value = typeof window.result3 !== "undefined" ? window.result3 : "Not available";
+  const result4Value = typeof window.result4 !== "undefined" ? window.result4 : "Not available";
+  document.getElementById("markonetext").textContent = (`The marks are Assignment 1: ${result1Value}, Assignment 2: ${result2}, Assignment 3: ${result3}, Assignment 4: ${result4}`);
+}
+
+function retrieve4(){
+  google.script.run.withSuccessHandler(mark4Return).retrieveValues4();
+}
 
 
 
-    </script>
+</script>
     <style>
       h1{
         text-align:center;
