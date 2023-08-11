@@ -4,16 +4,17 @@ function doGet(event) {
 }
 
 
-function graphSubmitted(mark1, mark2, mark3, mark4){
+function graphSubmitted(mark1, mark2, mark3, mark4, name){
   var id = "17cybAsn4u7KCI0wbLa5SnufTDhRwz1VVIG0v7sPRAHs";
   var spreadsheet = SpreadsheetApp.openById(id);
   var subject1 = spreadsheet.getSheetByName("Subject One");
 
-  subject1.appendRow([mark1, mark2, mark3, mark4]);
+  subject1.appendRow([mark1, mark2, mark3, mark4, name]);
   Logger.log(mark1 + " Marks were entered");
   Logger.log(mark2 + " Marks were entered");
   Logger.log(mark3 + " Marks were entered");
   Logger.log(mark4 + " Marks were entered");
+  Logger.log(name + " was saved");
 }
 var id = "17cybAsn4u7KCI0wbLa5SnufTDhRwz1VVIG0v7sPRAHs";
 var spreadsheet = SpreadsheetApp.openById(id);
@@ -22,6 +23,11 @@ function retrieveValues1(){
   var marksheet1 = spreadsheet.getRange("A2").getValue();
   Logger.log(marksheet1);
   return marksheet1;
+}
+function retrievename(){
+  var marksheetname = spreadsheet.getRange("E2").getValue();
+  Logger.log(marksheetname);
+  return marksheetname;
 }
 function retrieveValues2(){
   var marksheet2 = spreadsheet.getRange("B2").getValue();

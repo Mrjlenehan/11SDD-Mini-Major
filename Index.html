@@ -11,9 +11,11 @@
         <label>Mark for Assignment 2     </label><input type="text" id="MarkTwo" class="markstyle">
         <label>Mark for Assignment 3     </label><input type="text" id="MarkThree" class="markstyle">
         <label>Mark for Assignment 4     </label><input type="text" id="MarkFour" class="markstyle">
+        <label>Name or year for save file</label><input type="text" id="name">
       </div>
+      <button id="store" class="submit-button"> Store Data </button>
     </div>
-    <button id="graph" class="submit-button"> Store Data </button>
+
     <button id="retrieve">Retrieve </button>
     <button id="averagebutton">Find Average </button>
 
@@ -21,7 +23,7 @@
     <h2 id="average"></h2>
 
 <script>
-document.getElementById("graph").addEventListener("click", graphsubmit);
+document.getElementById("store").addEventListener("click", graphsubmit);
 document.getElementById("retrieve").addEventListener("click", retrieve1);
 document.getElementById("averagebutton").addEventListener("click", average);
 
@@ -30,22 +32,35 @@ function graphsubmit() {
     var mark2 = document.getElementById("MarkTwo").value;
     var mark3 = document.getElementById("MarkThree").value;
     var mark4 = document.getElementById("MarkFour").value;
-    google.script.run.withSuccessHandler(mark1Return).graphSubmitted(mark1, mark2, mark3, mark4);
+    var name = document.getElementById("name").value;
+    google.script.run.withSuccessHandler(mark1Return).graphSubmitted(mark1, mark2, mark3, mark4, name);
     document.getElementById("MarkOne").value = "";
     document.getElementById("MarkTwo").value = "";
     document.getElementById("MarkThree").value = "";
     document.getElementById("MarkFour").value = "";
+    document.getElementById("name").value = "";
 }
 
 function mark1Return(result1) {
     console.log(result1);
     window.result1 = result1;
-    retrieve2();
+    retrievename();
 }
 
 function retrieve1() {
     google.script.run.withSuccessHandler(mark1Return).retrieveValues1();
 }
+
+function nameReturn(name) {
+    console.log(name);
+    window.name = name;
+    retrieve2();
+}
+
+function retrievename() {
+  google.script.run.withSuccessHandler(nameReturn).retrievename();
+}
+
 
 function mark2Return(result2) {
     console.log(result2);
@@ -74,7 +89,7 @@ function mark4Return(result4){
   const result2Value = typeof window.result2 !== "undefined" ? window.result2 : "Not available";
   const result3Value = typeof window.result3 !== "undefined" ? window.result3 : "Not available";
   const result4Value = typeof window.result4 !== "undefined" ? window.result4 : "Not available";
-  document.getElementById("markonetext").textContent = (`The marks are Assignment 1: ${result1Value}, Assignment 2: ${result2}, Assignment 3: ${result3}, Assignment 4: ${result4}`);
+  document.getElementById("markonetext").textContent = (`The marks are Assignment 1: ${result1Value}, Assignment 2: ${result2Value}, Assignment 3: ${result3Value}, Assignment 4: ${result4Value}`);
 }
 
 function retrieve4(){
@@ -140,7 +155,7 @@ function average(){
         border-radius: 5px;
         font-size: 18px;
         cursor: pointer;
-        margin-left:820px;
+
         margin-top:20px;
       }
 
