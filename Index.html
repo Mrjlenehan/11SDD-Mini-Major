@@ -26,15 +26,22 @@
     <h2 id="average"></h2>
 
 <script>
+
 document.getElementById("store").addEventListener("click", graphsubmit);
 document.getElementById("retrieve").addEventListener("click", retrieve1);
 document.getElementById("averagebutton").addEventListener("click", average);
 // document.getElementById("back").addEventListener("click", previous);
 document.getElementById("next").addEventListener("click", next);
+let placeholder = 1;
 
 
 function next(){
-  google.script.run.withSuccessHandler(successnext).nextvalue();
+  google.script.run.withSuccessHandler(successrow).nextrow(placeholder);
+  placeholder = placeholder + 1;
+}
+
+function successrow(placeholder){
+  google.script.run.withSuccessHandler(successnext).nextvalue(placeholder);
 }
 
 function successnext(dataname){
