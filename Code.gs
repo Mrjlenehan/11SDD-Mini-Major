@@ -2,6 +2,7 @@ function doGet(event) {
   Logger.log(event)
   return HtmlService.createHtmlOutputFromFile("Index");
 }
+var placeholder = 1;
 
 
 function graphSubmitted(mark1, mark2, mark3, mark4, name){
@@ -18,7 +19,19 @@ function graphSubmitted(mark1, mark2, mark3, mark4, name){
 }
 var id = "17cybAsn4u7KCI0wbLa5SnufTDhRwz1VVIG0v7sPRAHs";
 var spreadsheet = SpreadsheetApp.openById(id);
+var subject1 = spreadsheet.getSheetByName("Subject One");
+function nextvalue(){
 
+  if (placeholder < subject1.getLastRow()){
+    placeholder = (placeholder + 1);
+  }
+  else{
+    placeholder = 2;
+  }
+  var dataname = subject1.getRange(placeholder , 5).getValue();
+  Logger.log(dataname);
+  return dataname;
+}
 function retrieveValues1(){
   var marksheet1 = spreadsheet.getRange("A2").getValue();
   Logger.log(marksheet1);

@@ -29,8 +29,17 @@
 document.getElementById("store").addEventListener("click", graphsubmit);
 document.getElementById("retrieve").addEventListener("click", retrieve1);
 document.getElementById("averagebutton").addEventListener("click", average);
-document.getElementById("back").addEventListener("click", previous);
-document.getElementById("next")
+// document.getElementById("back").addEventListener("click", previous);
+document.getElementById("next").addEventListener("click", next);
+
+
+function next(){
+  google.script.run.withSuccessHandler(successnext).nextvalue();
+}
+
+function successnext(dataname){
+  document.getElementById("selected").textContent = "Currently selected results are " + dataname;
+}
 
 function graphsubmit() {
     var mark1 = document.getElementById("MarkOne").value;
@@ -38,14 +47,16 @@ function graphsubmit() {
     var mark3 = document.getElementById("MarkThree").value;
     var mark4 = document.getElementById("MarkFour").value;
     var name = document.getElementById("name").value;
-    google.script.run.withSuccessHandler(mark1Return).graphSubmitted(mark1, mark2, mark3, mark4, name);
+    google.script.run.withSuccessHandler(successstore).graphSubmitted(mark1, mark2, mark3, mark4, name);
     document.getElementById("MarkOne").value = "";
     document.getElementById("MarkTwo").value = "";
     document.getElementById("MarkThree").value = "";
     document.getElementById("MarkFour").value = "";
     document.getElementById("name").value = "";
 }
-
+function successstore (){
+  console.log("Marks have been stored")
+}
 function mark1Return(result1) {
     console.log(result1);
     window.result1 = result1;
