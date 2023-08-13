@@ -57,28 +57,29 @@ function backvalue(placeholder){
   return dataname2
 }
 
-function retrieveValues1(){
-  var marksheet1 = spreadsheet.getRange("A2").getValue();
+function retrieveValues1(placeholder){
+  Logger.log("test")
+  var marksheet1 = subject1.getRange(placeholder , 1).getValue();
   Logger.log(marksheet1);
   return marksheet1;
 }
-function retrievename(){
-  var marksheetname = spreadsheet.getRange("E2").getValue();
+function retrievename(placeholder){
+  var marksheetname = subject1.getRange(placeholder , 5).getValue();
   Logger.log(marksheetname);
   return marksheetname;
 }
-function retrieveValues2(){
-  var marksheet2 = spreadsheet.getRange("B2").getValue();
+function retrieveValues2(placeholder){
+  var marksheet2 = subject1.getRange(placeholder , 2).getValue();
   Logger.log(marksheet2);
   return marksheet2;
 }
-function retrieveValues3(){
-  var marksheet3 = spreadsheet.getRange("C2").getValue();
+function retrieveValues3(placeholder){
+  var marksheet3 = subject1.getRange(placeholder , 3).getValue();
   Logger.log(marksheet3);
   return marksheet3;
 }
-function retrieveValues4(){
-  var marksheet4 = spreadsheet.getRange("D2").getValue();
+function retrieveValues4(placeholder){
+  var marksheet4 = subject1.getRange( placeholder , 4).getValue();
   Logger.log(marksheet4);
   return marksheet4;
 }
