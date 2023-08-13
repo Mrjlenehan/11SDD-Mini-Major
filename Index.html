@@ -15,7 +15,10 @@
       </div>
       <button id="store" class="submit-button"> Store Data </button>
     </div>
-
+    <button class="select" id="back">Older selection</button>
+    <h2 class="select" id="selected"> Currently selected results is Default </h2>
+    <button class="select" id="next">Newer selection</button>
+    <br>
     <button id="retrieve">Retrieve </button>
     <button id="averagebutton">Find Average </button>
 
@@ -26,6 +29,8 @@
 document.getElementById("store").addEventListener("click", graphsubmit);
 document.getElementById("retrieve").addEventListener("click", retrieve1);
 document.getElementById("averagebutton").addEventListener("click", average);
+document.getElementById("back").addEventListener("click", previous);
+document.getElementById("next")
 
 function graphsubmit() {
     var mark1 = document.getElementById("MarkOne").value;
@@ -161,6 +166,9 @@ function average(){
 
       .submit-button:hover {
         background-color: #0056b3;
+      }
+      .select{
+        display:inline-block;
       }
     </style>
   </body>
