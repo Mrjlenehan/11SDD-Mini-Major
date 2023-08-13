@@ -30,7 +30,7 @@
 document.getElementById("store").addEventListener("click", graphsubmit);
 document.getElementById("retrieve").addEventListener("click", retrieve1);
 document.getElementById("averagebutton").addEventListener("click", average);
-// document.getElementById("back").addEventListener("click", previous);
+document.getElementById("back").addEventListener("click", previous);
 document.getElementById("next").addEventListener("click", next);
 let placeholder = 1;
 
@@ -46,6 +46,17 @@ function successrow(placeholder){
 
 function successnext(dataname){
   document.getElementById("selected").textContent = "Currently selected results are " + dataname;
+}
+function previous(){
+  google.script.run.withSuccessHandler(successrow2).backrow(placeholder);
+  placeholder = placeholder - 1;
+}
+function successrow2(placeholder){
+  google.script.run.withSuccessHandler(successback).backvalue(placeholder);
+}
+
+function successback(dataname2){
+  document.getElementById("selected").textContent = "Currently selected results are " + dataname2;
 }
 
 function graphsubmit() {

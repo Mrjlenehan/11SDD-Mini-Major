@@ -46,6 +46,16 @@ function nextvalue(placeholder){
   Logger.log(dataname)
   return dataname
 }
+function backrow(placeholder){
+  placeholder = (placeholder - 1);
+  return placeholder;
+}
+
+function backvalue(placeholder){
+  var dataname2 = subject1.getRange(placeholder , 5).getValue();
+  Logger.log(dataname2)
+  return dataname2
+}
 
 function retrieveValues1(){
   var marksheet1 = spreadsheet.getRange("A2").getValue();
