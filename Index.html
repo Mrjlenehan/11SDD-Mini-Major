@@ -38,6 +38,7 @@ let placeholder = 1;
 function next(){
   google.script.run.withSuccessHandler(successrow).nextrow(placeholder);
   placeholder = placeholder + 1;
+  //the subroutine successrow will only run if the placeholder runs successfully
 }
 
 function successrow(placeholder){
@@ -71,6 +72,7 @@ function graphsubmit() {
     document.getElementById("MarkThree").value = "";
     document.getElementById("MarkFour").value = "";
     document.getElementById("name").value = "";
+    //this subroutine submits all the entered values into the sheet
 }
 function successstore (){
   console.log("Marks have been stored")
@@ -124,6 +126,7 @@ function mark4Return(result4){
   const result3Value = typeof window.result3 !== "undefined" ? window.result3 : "Not available";
   const result4Value = typeof window.result4 !== "undefined" ? window.result4 : "Not available";
   document.getElementById("markonetext").textContent = (`The marks are Assignment 1: ${result1Value}, Assignment 2: ${result2Value}, Assignment 3: ${result3Value}, Assignment 4: ${result4Value}. This has been stored under the name - ${name}`);
+  //displays the retrieved values
 }
 
 function retrieve4(){
@@ -139,6 +142,7 @@ function average(){
   let average = sum/4;
   console.log(average);
   document.getElementById("average").textContent = average;
+  //finds the average if all the window object values, which are first converted
 }
 
 </script>

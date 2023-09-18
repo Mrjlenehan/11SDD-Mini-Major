@@ -39,12 +39,14 @@ var subject1 = spreadsheet.getSheetByName("Subject One");
 function nextrow(placeholder){
   placeholder = (placeholder + 1);
   return placeholder;
+  //placeholder is a variable that stores the number of the row selected
 }
 
 function nextvalue(placeholder){
   var dataname = subject1.getRange(placeholder , 5).getValue();
   Logger.log(dataname)
   return dataname
+  //this subroutine retrieves the name from corresponding row in sheet
 }
 function backrow(placeholder){
   placeholder = (placeholder - 1);
@@ -62,6 +64,7 @@ function retrieveValues1(placeholder){
   var marksheet1 = subject1.getRange(placeholder , 1).getValue();
   Logger.log(marksheet1);
   return marksheet1;
+  //these sets of stubroutines retrieve the values to be store
 }
 function retrievename(placeholder){
   var marksheetname = subject1.getRange(placeholder , 5).getValue();
